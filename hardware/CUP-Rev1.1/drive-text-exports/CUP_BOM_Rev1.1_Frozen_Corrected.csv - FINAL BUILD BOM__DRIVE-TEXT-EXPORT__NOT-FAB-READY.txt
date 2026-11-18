@@ -1,0 +1,32 @@
+CUP REV1.1 — LOCAL REVIEW ONLY
+DRIVE-DERIVED TEXT EXPORT — NOT NATIVE CAD — NOT A FABRICATION-READY RELEASE
+Source title: CUP_BOM_Rev1.1_Frozen_Corrected.csv - FINAL BUILD BOM
+Google Drive source ID: 1HwCC6zO-CYaqh6RSbl47pdXCVpQ2X-tNiHxeYf4953I
+Source type: Google Sheet
+Export MIME type: text/csv
+Exported read-only: 2026-11-18
+Source-status note: Source title says FINAL BUILD BOM and rows mostly say Frozen; D1 noise behavior is labeled ASSUMPTION and build notes leave the D1 bias decision pending. Not fabrication approval.
+The text below is exported content only; Google Docs/Sheets formatting, comments, suggestions, revision history, formulas, and other metadata may not be represented.
+----- BEGIN DRIVE-DERIVED TEXT EXPORT -----
+
+Ref Des,Part / Value,Tolerance / Tempco,Package,Function / Notes,Qty,Critical?,Rev1.1 Governance
+D1,1N4732A (4.7V Zener),5%,DO-41 / SOD-123,"Primary avalanche noise source (~3uA bias) - WHITE+PINK configurable, ASSUMPTION",1,YES,Frozen
+D2,BAT54S,Series Dual,SOT-23,Over-voltage clamping to GND and 3V3_A -> GP26,1,YES,Frozen
+U1,TLV9062,RRIO Op-Amp,SOIC-8 / VSSOP-8,"Dual: U1A Gain G=47, U1B 1.65V Buffer - stability NOT validated by 212kHz corner alone",1,YES,Frozen
+R1,100kΩ,1%,805,Zener bias limiter ~3uA from VBUS 5V,1,,Frozen
+R2,1kΩ,1%,805,AFE gain input (fc 1.59kHz HP with C1=0.1uF) - Concept image showed 10k - HIGH conflict resolved to 1k,1,,"Frozen per handoff, NOT image"
+R3,47kΩ,1%,805,AFE gain feedback (G=R3/R2=47) - Concept image showed 10k - HIGH conflict resolved to 47k,1,,"Frozen per handoff, NOT image"
+R4,10kΩ,0.10%,805,Precision divider for 1.65V VREF top - Matched,1,YES,Frozen
+R5,10kΩ,0.10%,805,Precision divider for 1.65V VREF bottom - Matched,1,YES,Frozen
+R6,1kΩ,1%,805,Series isolation into ADC GP26 + anti-alias with C3=750pF fc~212kHz,1,,Frozen
+R7,0Ω,1%,805,Jumper U1B out -> U1A IN+ buffered VREF - Rev1.1 decision 0Ω default (was 100Ω DNP in Rev1.0),1,,CORRECTED per Rev1.1 governance - was DNP
+C1,0.1uF,X7R 50V,805,AC coupling Zener->gain - Concept image showed 10uF - MEDIUM conflict resolved to 0.1uF,1,,"Frozen per handoff, NOT image"
+C2,1.0uF,X7R 16V,805,Reference decoupling 1.65V midpoint,1,,Frozen
+C3,750pF,C0G/NP0 50V,805,Anti-alias fc~212kHz with R6 - Concept image labeled as C5 - HIGH collision resolved to C3,1,YES,"Frozen per handoff, NOT image"
+C4,10uF,X7R 16V,805,Bulk decoupling 3V3_A island - Concept image shifted to C1,1,,Frozen
+C5,100nF,X7R 16V,805,HF decoupling 3V3_A,1,,Frozen
+C6,100nF,X7R 16V,805,Dedicated supply decoupling U1 Pin8 VCC,1,,Frozen
+FB1,600Ω @100MHz Ferrite,Ferrite Bead,805,Power isolation 3V3_RAW->3V3_A >40dB req @500kHz-2MHz SMPS - PHYSICAL BENCH VALIDATION PENDING,1,YES,Frozen - needs datasheet verification
+J1,Pico 2 / RP2350 Socketed,,,"Core processor dual core 150MHz - Core0 USB CDC, Core1 500kS/s DMA",1,YES,Frozen
+TP1,Test Point,,,Zener cathode / NOISE source,1,,Added for Test 1.1
+TP2,Test Point,,,ADC input GP26 after R6/C3/D2,1,,Added for Test 3.1

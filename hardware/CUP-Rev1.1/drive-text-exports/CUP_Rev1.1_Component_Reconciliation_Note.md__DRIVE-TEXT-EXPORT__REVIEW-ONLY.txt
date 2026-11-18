@@ -1,0 +1,110 @@
+CUP REV1.1 — LOCAL REVIEW ONLY
+DRIVE-DERIVED TEXT EXPORT — NOT NATIVE CAD — NOT A FABRICATION-READY RELEASE
+Source title: CUP_Rev1.1_Component_Reconciliation_Note.md
+Google Drive source ID: 1Ur6W-kqjmjKL4mgm_daFhpKUhQj440RhNvxy96pkey4
+Source type: Google Doc
+Export MIME type: text/plain
+Exported read-only: 2026-11-18
+Source-status note: Concept image vs. design-committed baseline; image is non-authoritative; noise controls and LUT validation remain unmeasured/pending.
+The text below is exported content only; Google Docs/Sheets formatting, comments, suggestions, revision history, formulas, and other metadata may not be represented.
+----- BEGIN DRIVE-DERIVED TEXT EXPORT -----
+
+﻿CUP Rev 1.1 – Component & Label Reconciliation Note
+Status: CONCEPT IMAGE vs. DESIGN-COMMITTED BASELINE Date: 2026-10-28 Purpose: Explicitly surface every visible inconsistency between the generated workbench concept image and the authoritative handoff package (BOM + schematic description) so that no ambiguous claim is carried forward.
+1. Scope
+* Source A: Generated concept image (CUP_Rev1.1_Workbench_Concept.png)
+* Source B: Design-committed handoff package (Project Overview, Protocol Spec, Test Plan, AFE Schematic Rev1.0-COMMITTED, BOM Rev1.0-COMMITTED) Concept image is treated strictly as spatial visualization. No authority over nets, values, pins.
+2. Conflicts
+Concept Label
+	Image Value
+	Authoritative BOM
+	Severity
+	Resolution
+	R1
+	100k 1%
+	R1=100k 1% Zener bias
+	None
+	Keep
+	D1
+	1N4732A 4.7V
+	D1=1N4732A 4.7V
+	None
+	Keep
+	R2 (image)
+	10k 0.1%
+	BOM R2=1k 1% gain input
+	High
+	Image used R2 for divider. Authoritative: R4/R5=10k 0.1% divider; R2 remains 1k
+	R3 (image)
+	10k 0.1%
+	BOM R3=47k 1% gain feedback
+	High
+	Same mis-assignment
+	C1 (image)
+	10uF 10V
+	BOM C4=10uF bulk on 3V3_A
+	Medium
+	Image shifted bulk to C1. Authoritative C1=0.1uF AC coupling
+	C2 (image)
+	100nF 50V
+	BOM C5=100nF HF decouple
+	Medium
+	Designator shift
+	C3 (image)
+	unlabelled/conflicting
+	BOM C3=750pF C0G anti-alias
+	High
+	Image places 750pF near ADC but labels C5. Authoritative anti-alias is C3=750pF
+	C5 (image)
+	750pF 50V C0G
+	BOM C5=100nF
+	High
+	Direct collision
+	R6
+	1k 1%
+	R6=1k 1% series into ADC
+	None
+	Keep
+	D2
+	BAT54S
+	D2=BAT54S
+	None
+	Keep
+	U1
+	TLV9062
+	U1=TLV9062
+	None
+	Keep
+	Gain
+	-47
+	G=R3/R2=47
+	None
+	Keep
+	Mid-rail
+	1.65V REF
+	1.65V ratiometric
+	None
+	Keep
+	3. Topological / Clarity Issues
+* U1A feedback not unambiguously depicted as inverting (R2 into IN-, R3 feedback). IN+ to buffered 1.65V implied not pin-accurate.
+* AC coupling C1 0.1uF placement vs Zener cathode and R2 not crystal-clear in rendering.
+* Isolation barrier milled slot and 3V3_RAW / 3V3_A labelling convey intent but cannot verify ferrite bead performance, return currents, stitching.
+* ADC entry GP26/ADC0 correctly indicated, clamping and series R shown matches intent.
+4. Disposition
+* Concept image remains useful as spatial/pedagogical aid only.
+* Not to be used as source for: netlist, BOM, pin mapping, verification limits.
+* All future work shall reference only Design-Committed handoff package and formally versioned updates.
+5. Immediate Follow-on
+1. Freeze authoritative component list as in handoff BOM (C3=750pF, R2=1k, R3=47k, R4/R5=10k divider, etc.)
+2. Proceed with Python behavioral model using signal path from handoff.
+3. When KiCad schematic created, it becomes new single source of truth; concept image retired to Illustrations/Non-Authoritative.
+6. Skeleton Implementation (this repo)
+* Analog front end: 0.1uF AC coupling, configurable Zener noise, gain-stage model, 1k/750pF anti-alias
+* Reference: U1A non-inverting tied to buffered 1.65V, R7=0Ω default jumper under Rev 1.1 decision
+* ADC path: 12-bit quant + mandatory 33-point piecewise-linear CDF LUT, no invented LUT
+* Noise controls: separate white and optional pink, marked as unmeasured assumptions
+* Falsification tests: Zener-present vs removed variance, lag-1, uniformity, clipping, per-seed
+* Evidence labels: MODEL_EXECUTION, STATISTICAL_RESULT, PHYSICAL_BENCH_VALIDATION_PENDING
+* Boundary: 1k/750pF ~212kHz corner alone does NOT validate complete analog response; does NOT claim TLV9062 stability, real Zener noise, or PCB isolation without additional data
+* Status: MODEL-SKELETON / LUT-DEPENDENT VALIDATION PENDING
+* Strict config check refuses LUT-dependent validation until authoritative 33-point table supplied

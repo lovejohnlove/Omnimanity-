@@ -1,0 +1,113 @@
+CUP REV1.1 — LOCAL REVIEW ONLY
+DRIVE-DERIVED TEXT EXPORT — NOT NATIVE CAD — NOT A FABRICATION-READY RELEASE
+Source title: CUP_Rev1.1_Fabrication_Build_Notes.md - DESIGN-COMMITTED FAB BLOCKED with review observations
+Google Drive source ID: 1ohGJf1kDnaYcFCQ0XqMcjhPAUdpgTgrbtHJjed9A-Es
+Source type: Google Doc
+Export MIME type: text/plain
+Exported read-only: 2026-11-18
+Source-status note: Source status: DESIGN-COMMITTED / FABRICATION RELEASE BLOCKED; documentation candidate; does not authorize fabrication.
+The text below is exported content only; Google Docs/Sheets formatting, comments, suggestions, revision history, formulas, and other metadata may not be represented.
+----- BEGIN DRIVE-DERIVED TEXT EXPORT -----
+
+﻿CUP_Rev1.1_Fabrication_Build_Notes.md
+Status: DESIGN-COMMITTED / FABRICATION RELEASE BLOCKED
+Date: 2026-10-28 Disposition: Documentation candidate. Does NOT close any of four open gates or authorize fabrication. Governance: Frozen component assignments per reconciliation note, concept image non-authoritative. Evidence labels MODEL_EXECUTION, STATISTICAL_RESULT, PHYSICAL_BENCH_VALIDATION_PENDING remain intact.
+Frozen Baseline (from reconciliation)
+* R1 100kΩ 1% Zener bias VBUS 5V -> D1 1N4732A 4.7V (bias ~3uA, PENDING decision)
+* C1 0.1uF X7R 50V AC coupling Zener->R2 (NOT 10uF from rendering)
+* R2 1kΩ 1% gain input (NOT 10k from rendering)
+* R3 47kΩ 1% feedback G=R3/R2=47 (NOT 10k from rendering)
+* R4/R5 10kΩ 0.1% matched divider 1.65V ratiometric, U1B TLV9062 buffered
+* R7 0Ω default jumper U1B out -> U1A IN+ per Rev1.1 decision (was 100Ω DNP in Rev1.0)
+* R6 1kΩ 1% + C3 750pF C0G anti-alias fc=1/(2πR6C3)≈212kHz (image labeled as C5, collision resolved)
+* C4 10uF bulk on 3V3_A island (image shifted to C1), C2 1.0uF ref decoupling, C5/C6 100nF HF
+* D2 BAT54S Schottky clamp to 3V3_A/GND, GP26/ADC0
+* U1 TLV9062 RRIO dual, U2 RP2350 Pico 2 dual core 150MHz
+* TP1 Zener cathode (Test 1.1 without probing D1 pad), TP2 post-R6/C3/D2 (actual signal at GP26)
+* J1 Pico2 socketed USB-C VBUS 5V
+Physical Stackup
+* 4-layer FR4, 1.6mm thickness, 0.5oz inner / 1oz outer (corrected from 1oz all layers for cost), HASL finish default (ENIG optional $5-15 with justification for fine-pitch/long shelf life)
+* Layer stack: L1 Signal + 3V3_A island partitioned by placement, L2 GND solid unbroken (no milled slot), L3 Power 3V3_RAW, L4 Signal
+* Previous note said milled slot between 3V3_RAW and 3V3_A - RESOLVED to solid L2, no slot. Partition analog/digital placement on L1 only. If slot used for high-impedance reason, slot only L2 plane, L1/L3/L4 continuous, no signal crosses.
+* ESD handling: work surface ESD SAFE 10^6-10^9 Ω/sq, not PCB substrate property (removed from fab notes)
+* Design intent recorded; layout, clearances, and return-current paths still require review
+Firmware and Calibration Responsibilities
+* Core0: USB CDC command parser per Protocol_Spec.md v1.1 - CAL, UPLOAD , BIAS , SET MODE <0|1>, SET BETA , START, STOP, State Machine IDLE->CAL->READY->RUNNING
+* Core1: 500kS/s DMA double-buffer ADC GP26, P-BITS generation, Ising solver, P-packets and A-packets
+* CAL: histogram 16384 samples, 16KB counters, streaming, not 100k sort (RAM: 16KB vs 200KB+working set, CPU: ~16k ops vs ~1.7M ops, RP2350 520KB SRAM budget). Quantile uncertainty outer bins ~1.5% fine for KS threshold 0.02 in Test 1.3
+* LUT: firmware-internal, 33-point format, verified indirectly via Test 1.3 KS on post-LUT u stream. No host binary dump, no LUT_START marker. If host verification genuinely required, add READ_LUT to Protocol v1.1 §2: Response OK LUT v<33 comma-separated ints>
+* Requirements documented; compilation, flashing, integration remain unverified (Gate 2)
+Pre-Release Review - Gate Status
+| Item | Review disposition | | Component reconciliation | Consistent with stated baseline C1=0.1uF R2=1k R3=47k R7=0Ω; verify against actual schematic and BOM Rev1.1 Frozen | | 4-layer stackup and milled slot | Design intent recorded solid L2 no slot; layout, clearances, return-current paths still require review | | Zener bias and noise | Unverified at proposed 3uA operating current - D1 bias decision PENDING | | FB1 attenuation | Open; 600Ω @100MHz rating alone does not establish >40dB at 500kHz-2MHz - needs measurable definition | | ADC front end | Confirm complete TLV9062 feedback topology inverting R2->IN- R3 feedback, reference connection R7 0Ω buffered VREF->IN+, clamp orientation BAT54S, loading R6/C3 | | Firmware and calibration | Requirements documented histogram 16k, no binary dump; compilation, flashing, integration remain unverified | | CDF LUT | 33-point format specified; actual table contents and model execution still require evidence via Test 1.3 |
+Two details made explicit per review
+1. Analog-island isolation claim - measurable definition
+Previous claim ">40dB attenuation across 500kHz-2MHz SMPS band" lacks measurement nodes and calculation.
+
+
+Ferrite bead attenuation depends on:
+
+
+* Its impedance Z(f) across 500kHz-2MHz, not just 600Ω @100MHz spec point
+* Surrounding source impedance (3V3_RAW from Pico SMPS) and load impedance (3V3_A island C4 10uF + C5/C6 100nF + U1 + divider)
+* Capacitor network forming pi-filter: C4 bulk + FB1 + C5/C6
+
+
+Exact definition to be used for pass/fail:
+
+
+* Measurement nodes: V_RAW = 3V3_RAW before FB1 (Pico side), V_A = 3V3_A after FB1 (analog island side, at C4 pad)
+* Source: Pico internal SMPS switching at 500kHz-2MHz (RT6150), or external injection via VNA/spectrum analyzer with 50Ω source for characterization
+* Load: Actual analog island load (U1 TLV9062 + R4/R5 divider + C4/C5/C6) or 50Ω termination for VNA, state which
+* Attenuation calculation: A(f) = 20*log10(|V_RAW(f)| / |V_A(f)|) in dB, measured at 500kHz, 1MHz, 1.5MHz, 2MHz
+* Pass criterion: A(f) >40dB for all f in [500kHz, 2MHz] with stated source/load
+* Method: VNA S21 with injection cap, or spectrum analyzer with near-field probe + direct probe, document calibration, bandwidth, averaging
+* Evidence label: PHYSICAL_BENCH_VALIDATION_PENDING until VNA data with nodes and calculation documented
+* Note: Solid L2 GND unbroken is assumed; if milled slot used, return-current detour increases loop and may degrade isolation - must not cross signals over slot
+2. Calibration LUT - exact contract
+Note specifies 33 quantiles and 66-byte LE binary, but parser and firmware must agree on full contract. Monotonic table alone does not prove mapping produces statistically uniform output.
+
+
+Contract:
+
+
+* Size: Exactly 33 points, no more no less
+* Integer width: uint16_t, 0-4095 (12-bit ADC range)
+* Byte order: Little-endian if binary representation used (for offline analysis only - no host dump in current protocol)
+* Endpoint handling: lut[0] = min quantile (0/32), lut[32] = max quantile (32/32), inclusive. Mapping: adc <= lut[0] => u=0.0, adc >= lut[32] => u=1.0
+* Duplicate quantiles: If hi == lo for interval idx (flat region), t=0, u = idx/(32). No division by zero
+* Monotonicity: Non-decreasing, lut[i] <= lut[i+1] for all i, 0<=lut[i]<=4095, fails closed if violated
+* Interpolation: Piecewise-linear between quantiles. idx = searchsorted(lut, adc, side='right')-1, clamped 0..31, lo=lut[idx], hi=lut[idx+1], denom=hi-lo, t=(adc-lo)/denom if denom>0 else 0, u=(idx+t)/32
+* No silent linear-scaling substitute: Gaussian does NOT become uniform via linear scaling, must use LUT
+* Verification: Test 1.3 KS D<0.02 on u stream, plus moments mu 0±0.01 sigma 0.577±0.02 kurt -1.2 on [-1,1] mapping. KS pass proves mapping produces uniform by construction, monotonic alone does not
+* Evidence labels: LUT generation = MODEL_EXECUTION (firmware) or PHYSICAL_BENCH_VALIDATION_PENDING (real hardware), KS on u = STATISTICAL_RESULT, uniformity claim = PHYSICAL_BENCH_VALIDATION_PENDING until hardware data
+* Current status: Format specified, actual table contents and model execution still require evidence via Test 1.3, no host READ_LUT unless added to Protocol v1.1
+Open Items - Fabrication Release BLOCKED
+* D1 bias decision PENDING: Option A R1 47k -> ~6uA, Option B 2N3904 EB junction as primary 1N4732A fallback, Option C adjust Test 1.1 tolerance 4.7V±0.2V to actual operating point measured at 3uA. Locking D1 as immutable without one is same pattern as C1=0.47uF would have been.
+* FB1 attenuation: Needs VNA per measurable definition above
+* TLV9062 feedback topology: Confirm inverting R2->IN- R3 feedback, reference via R7 0Ω, clamp orientation, loading
+* Firmware/calibration: Compile, flash, integration unverified
+* CDF LUT: Contents and execution pending hardware, format specified
+* KiCad layout: Clearances, return paths, no signal crosses isolation boundary, solid L2
+Evidence Labels - must remain intact
+* MODEL_EXECUTION: What Python or firmware code computed (e.g., simulated waveform, histogram building)
+* STATISTICAL_RESULT: KS, moments, lag-1, variance collapse computed from data (simulated or hardware)
+* PHYSICAL_BENCH_VALIDATION_PENDING: Must be measured on hardware per Test Plan - attached to Zener bias, FB1 attenuation, TLV9062 stability, PCB isolation, real LUT
+
+
+This distinction prevented previous "run Tests 1.1-3.5 against the model" over-claim. Keep it.
+Disposition
+Build note suitable as documentation candidate. Does NOT close any of four open gates or authorize fabrication. Does NOT write to Drive as final release, does NOT independently inspect archived files - review only.
+
+
+Next artifact remains sim_mixing.py executed locally - closest closed gate, one python sim_mixing.py away.
+Files in this package for manufacturing and bench validation
+* CUP_Rev1.1.kicad_sch, .kicad_pcb, .kicad_pro (solid GND no slot, HASL default, 0.5oz inner/1oz outer, D1 bias PENDING note)
+* CUP_BOM_Rev1.1_Frozen_Corrected.csv with R7=0Ω and D1 bias PENDING
+* main.c firmware skeleton with histogram 16k CAL, no LUT binary dump, P/A packets only, LUT internal
+* cup_behavioral_model_skeleton_v1.py and cup_lut_loader.py (loader for offline analysis, not host LUT loading)
+* host_analyzer_v2.py updated to remove LUT_START binary parsing, expects P/A packets, Test 1.3 KS for LUT verification indirect
+* Project_Overview.md, Protocol_Spec.md, Kernel_And_Architecture_Spec.md, Test_Plan.md
+* This file: CUP_Rev1.1_Fabrication_Build_Notes.md
+
+
+Status: DESIGN-COMMITTED / FABRICATION RELEASE BLOCKED
