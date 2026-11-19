@@ -1,0 +1,1641 @@
+{
+  "experiment": "marginal-preserving two-coordinate coupling; distinct from the earlier row-shift arm",
+  "status": "exploratory numerical run; local and review-only; no physical claim",
+  "construction": "M=P(epsilon) tensor P(epsilon); in source row (infinity,infinity), delta=gamma*epsilon*(1-epsilon); add delta to (infinity,infinity) and (r,r), subtract delta from (infinity,r) and (r,infinity)",
+  "state_order": [
+    "0",
+    "1",
+    "infinity",
+    "r"
+  ],
+  "pair_indexing": "4*a+b",
+  "gamma_values": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    1.0
+  ],
+  "epsilon_grid": {
+    "uniform_points": 1001,
+    "uniform_step": 0.001,
+    "log_spaced_p_points": 141,
+    "p_definition": "p=1-epsilon",
+    "p_min": 1e-08,
+    "p_max": 0.1,
+    "deduplication_absolute_tolerance": 1e-14,
+    "unique_points": 1139,
+    "includes_epsilon_0_and_1": true
+  },
+  "matrix_validation_maxima": {
+    "row_sum_max_abs_error": 2.220446049250313e-16,
+    "marginal_max_abs_error": 2.220446049250313e-16,
+    "swap_commutator_max_abs_error": 0.0,
+    "swap_off_block_max_abs_error": 2.7671688915724496e-17,
+    "direct_vs_10plus6_spectrum_max_match_error": 8.104628079763643e-15,
+    "direct_vs_swap_route_slem_abs_error": 5.662137425588298e-15,
+    "coordinate_invariant_space_residual": 9.992007221626409e-16,
+    "coordinate_degree7_restricted_charpoly_coefficient_error": 1.7763568394002505e-15,
+    "single_chain_charpoly_division_remainder_error": 1.1102230246251565e-16,
+    "coordinate_degree7_full_spectrum_subset_error": 7.771561172376096e-15,
+    "minimum_transition_probability": 0.0,
+    "gamma0_product_matrix_max_abs_error": 0.0,
+    "gamma0_gap_vs_single_chain_max_abs_error": 2.9976021664879227e-15,
+    "gamma1_synchronized_row_max_abs_error": 1.1102230246251565e-16
+  },
+  "spectral_structure": {
+    "coordinate_observable_invariant_factor_degree": 7,
+    "coordinate_factor_roots": "one eigenvalue 1 plus two copies of each of the three nontrivial eigenvalues of P(epsilon)",
+    "generic_quotient_degree": 9,
+    "swap_symmetric_block_dimension": 10,
+    "swap_antisymmetric_block_dimension": 6,
+    "antisymmetric_eigenvalues": "lambda_i*lambda_j for i<j from P(epsilon)",
+    "full_matrix_vs_10_plus_6_block_check": "performed at every sweep point; report maxima above",
+    "incorrect_chi_P_squared_divisor_used": false,
+    "restricted_root_matching_caveat": "double-precision eigenvalue matching for the degree-7 restricted block becomes ill-conditioned at epsilon=1, where the zero eigenvalue has high multiplicity; invariant-space residual, coefficient-based factor check, full-spectrum subset match, and separate 50-digit endpoint check are recorded"
+  },
+  "symmetric_block_vs_rho_sampled_test": {
+    "comparison": "largest modulus after removing one eigenvalue nearest 1 in the 10x10 symmetric block, versus rho(epsilon) of P(epsilon)",
+    "results_by_gamma": {
+      "0.0": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 2.4424906541753444e-15,
+        "epsilon_at_maximum_excess": 0.022,
+        "points_exceeding_rho_beyond_noise_tolerance": 0,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": null,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "0.1": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 2.9976021664879227e-15,
+        "epsilon_at_maximum_excess": 0.311,
+        "points_exceeding_rho_beyond_noise_tolerance": 0,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": null,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "0.25": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 3.6637359812630166e-15,
+        "epsilon_at_maximum_excess": 0.085,
+        "points_exceeding_rho_beyond_noise_tolerance": 0,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": null,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "0.5": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 2.3314683517128287e-15,
+        "epsilon_at_maximum_excess": 0.167,
+        "points_exceeding_rho_beyond_noise_tolerance": 0,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": null,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "0.75": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 3.219646771412954e-15,
+        "epsilon_at_maximum_excess": 0.012,
+        "points_exceeding_rho_beyond_noise_tolerance": 0,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": null,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "0.9": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 0.030633153823372172,
+        "epsilon_at_maximum_excess": 0.679,
+        "points_exceeding_rho_beyond_noise_tolerance": 1016,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": 0.001,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      },
+      "1.0": {
+        "max_symmetric_block_nonperron_modulus_minus_rho": 0.054308338628006436,
+        "epsilon_at_maximum_excess": 0.7010000000000001,
+        "points_exceeding_rho_beyond_noise_tolerance": 1137,
+        "noise_tolerance_for_exceedance": 1e-12,
+        "first_exceedance_epsilon_if_any": 0.001,
+        "interpretation": "sampled 10x10 symmetric-block SLEM compared with rho(epsilon); not a continuum proof"
+      }
+    },
+    "interpretive_limit": "grid result only; does not establish a bound for every real epsilon"
+  },
+  "symmetric_block_excess_peak_refinements": [
+    {
+      "gamma": 0.0,
+      "status": "no robust interior excess peak to refine",
+      "coarse_max_excess": 2.4424906541753444e-15,
+      "noise_threshold": 1e-12
+    },
+    {
+      "gamma": 0.1,
+      "status": "no robust interior excess peak to refine",
+      "coarse_max_excess": 2.9976021664879227e-15,
+      "noise_threshold": 1e-12
+    },
+    {
+      "gamma": 0.25,
+      "status": "no robust interior excess peak to refine",
+      "coarse_max_excess": 3.6637359812630166e-15,
+      "noise_threshold": 1e-12
+    },
+    {
+      "gamma": 0.5,
+      "status": "no robust interior excess peak to refine",
+      "coarse_max_excess": 2.3314683517128287e-15,
+      "noise_threshold": 1e-12
+    },
+    {
+      "gamma": 0.75,
+      "status": "no robust interior excess peak to refine",
+      "coarse_max_excess": 3.219646771412954e-15,
+      "noise_threshold": 1e-12
+    },
+    {
+      "gamma": 0.9,
+      "status": "persistent; locally refined",
+      "coarse_epsilon": 0.679,
+      "coarse_max_excess": 0.030633153823372172,
+      "scan_interval": [
+        "0.678",
+        "0.68"
+      ],
+      "working_precision_decimal_digits": 50,
+      "refined_epsilon": "0.6785502983657621338866636681217747825879",
+      "refined_symmetric_block_excess_over_rho": "0.03063318255681866333073205724501047857927",
+      "epsilon_bracket": [
+        "0.6785502983461574321145631868594918454931",
+        "0.6785502983853668356587641493840577196827"
+      ],
+      "epsilon_bracket_width": "3.9209404e-11",
+      "high_precision_evaluations": 45
+    },
+    {
+      "gamma": 1.0,
+      "status": "persistent; locally refined",
+      "coarse_epsilon": 0.7010000000000001,
+      "coarse_max_excess": 0.054308338628006436,
+      "scan_interval": [
+        "0.7000000000000001",
+        "0.7020000000000001"
+      ],
+      "working_precision_decimal_digits": 50,
+      "refined_epsilon": "0.7012746569121385366085590862898280079459",
+      "refined_symmetric_block_excess_over_rho": "0.0543083570554754178074820260974176680438",
+      "epsilon_bracket": [
+        "0.7012746568925338348364586050275450708511",
+        "0.7012746569317432383806595675521109450406"
+      ],
+      "epsilon_bracket_width": "3.9209404e-11",
+      "high_precision_evaluations": 45
+    }
+  ],
+  "high_precision_endpoint_coordinate_factor_check": {
+    "epsilon": "1",
+    "gamma": "0.5 (delta=0 at this endpoint)",
+    "expected_coordinate_factor": "(lambda-1)*lambda^6",
+    "high_precision_invariant_subspace_residual": "0.0",
+    "high_precision_max_modulus_of_six_zero_roots": "7.52980089582e-26",
+    "working_precision_decimal_digits": 50,
+    "interpretation": "confirms endpoint factor at high precision; double-precision eigensolver root matching near the defective zero cluster is ill-conditioned"
+  },
+  "state_label_permutation_noise_floor": {
+    "relabeling_method": "random simultaneous row/column conjugation by state permutation (similarity transform)",
+    "seed": 20261119,
+    "permutations_per_sampled_matrix": 8,
+    "sampled_matrix_count": 175,
+    "total_permuted_spectrum_checks": 1400,
+    "max_spectrum_match_error": 8.548717289613705e-15,
+    "max_slem_difference": 8.548717289613705e-15,
+    "samples": [
+      {
+        "gamma": 0.0,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.3314683517128287e-15,
+        "max_slem_difference": 1.5543122344752192e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 2.1094237467877974e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.219646771412954e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.220446049250313e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.1094237467877974e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 2.220446049250313e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.237726045655905e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.6637359812630166e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.884981308350689e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.887379141862766e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 7.216449660063518e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 1.8041124150158794e-16
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.3322676295501878e-15,
+        "max_slem_difference": 4.336808689942018e-17
+      },
+      {
+        "gamma": 0.0,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 2.4424906541753444e-15
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.107825191113079e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.6637359812630166e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 1.6653345369377348e-15
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.218847493575595e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.295673038527314e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.4416913763379853e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.773159728050814e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 6.439293542825908e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.5543122344752192e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 3.3306690738754696e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.1102230246251565e-15,
+        "max_slem_difference": 1.6653345369377348e-16
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 5.0306980803327406e-17
+      },
+      {
+        "gamma": 0.1,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 1.9984014443252818e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.885780586188048e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.6637359812630166e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.219646771412954e-15,
+        "max_slem_difference": 1.9984014443252818e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.107825191113079e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.219646771412954e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.3298697960381105e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.218847493575595e-15,
+        "max_slem_difference": 2.3314683517128287e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.9984014443252818e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.220446049250313e-15,
+        "max_slem_difference": 3.3306690738754696e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 6.106226635438361e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.3322676295501878e-15,
+        "max_slem_difference": 3.885780586188048e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 2.7755575615628914e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.5543122344752192e-15,
+        "max_slem_difference": 1.5265566588595902e-16
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.3322676295501878e-15,
+        "max_slem_difference": 3.8163916471489756e-17
+      },
+      {
+        "gamma": 0.25,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.3314683517128287e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.344633236840599e-15,
+        "max_slem_difference": 3.3306690738754696e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.884981308350689e-15,
+        "max_slem_difference": 1.887379141862766e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.107825191113079e-15,
+        "max_slem_difference": 2.220446049250313e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.9389211565826713e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.440892098500626e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.218847493575595e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.329070518200751e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.440892098500626e-15,
+        "max_slem_difference": 3.3306690738754696e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.6637359812630166e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.9960036108132044e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.1649348980190553e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.219646771412954e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.220446049250313e-15,
+        "max_slem_difference": 9.43689570931383e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.5543122344752192e-15,
+        "max_slem_difference": 1.8041124150158794e-16
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.1102230246251565e-15,
+        "max_slem_difference": 4.336808689942018e-17
+      },
+      {
+        "gamma": 0.5,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 2.4424906541753444e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.440092820663267e-15,
+        "max_slem_difference": 1.5543122344752192e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.886579864025407e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 1.1102230246251565e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.444555191083293e-15,
+        "max_slem_difference": 1.6653345369377348e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3335590258932495e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.7764110486817194e-15,
+        "max_slem_difference": 1.7763568394002505e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.773959005888173e-15,
+        "max_slem_difference": 2.6645352591003757e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.6629367034256575e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.218847493575595e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.440892098500626e-15,
+        "max_slem_difference": 1.3322676295501878e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.885780586188048e-15,
+        "max_slem_difference": 8.881784197001252e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.6629367034256575e-15,
+        "max_slem_difference": 5.551115123125783e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.1094237467877974e-15,
+        "max_slem_difference": 4.440892098500626e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 6.661338147750939e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.7763568394002505e-15,
+        "max_slem_difference": 7.771561172376096e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 2.220446049250313e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.3322676295501878e-15,
+        "max_slem_difference": 1.1102230246251565e-16
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.9984014443252818e-15,
+        "max_slem_difference": 3.8163916471489756e-17
+      },
+      {
+        "gamma": 0.75,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 3.1086244689504383e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.329070518200751e-15,
+        "max_slem_difference": 3.552713678800501e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.218847493575595e-15,
+        "max_slem_difference": 4.218847493575595e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.219646771412954e-15,
+        "max_slem_difference": 1.2212453270876722e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 3.3306690738754696e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 3.774758283725532e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.885780586188048e-15,
+        "max_slem_difference": 3.885780586188048e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 3.774758283725532e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 6.5503158452884236e-15,
+        "max_slem_difference": 4.884981308350689e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.885780586188048e-15,
+        "max_slem_difference": 3.4416913763379853e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.1094237467877974e-15,
+        "max_slem_difference": 1.9984014443252818e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.9976021664879227e-15,
+        "max_slem_difference": 2.9976021664879227e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.551115123125783e-15,
+        "max_slem_difference": 5.551115123125783e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 2.1094237467877974e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.7755575615628914e-15,
+        "max_slem_difference": 2.220446049250313e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.4416913763379853e-15,
+        "max_slem_difference": 3.4416913763379853e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 3.1086244689504383e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 3.9968028886505635e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.887379141862766e-15,
+        "max_slem_difference": 1.887379141862766e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.774758283725532e-15,
+        "max_slem_difference": 1.9984014443252818e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.5543122344752192e-15,
+        "max_slem_difference": 1.1657341758564144e-15
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 1.5265566588595902e-16
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.1102230246251565e-15,
+        "max_slem_difference": 1.5612511283791264e-17
+      },
+      {
+        "gamma": 0.9,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.047,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.440892098500626e-15,
+        "max_slem_difference": 4.440892098500626e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.094,
+        "permutations": 8,
+        "max_spectrum_match_error": 8.548717289613705e-15,
+        "max_slem_difference": 8.548717289613705e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.14200000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.662137425588298e-15,
+        "max_slem_difference": 5.662137425588298e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.189,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.4416913763379853e-15,
+        "max_slem_difference": 1.6653345369377348e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.23700000000000002,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 2.4424906541753444e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.28400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.551914400963142e-15,
+        "max_slem_difference": 4.551914400963142e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.331,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.9968028886505635e-15,
+        "max_slem_difference": 2.6645352591003757e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.379,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.1086244689504383e-15,
+        "max_slem_difference": 2.7755575615628914e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.426,
+        "permutations": 8,
+        "max_spectrum_match_error": 5.218048215738236e-15,
+        "max_slem_difference": 3.774758283725532e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.47400000000000003,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.885780586188048e-15,
+        "max_slem_difference": 1.5543122344752192e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.521,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 2.6645352591003757e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.5690000000000001,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 3.552713678800501e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.616,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.55351295663786e-15,
+        "max_slem_difference": 2.55351295663786e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.663,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.107825191113079e-15,
+        "max_slem_difference": 4.107825191113079e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.711,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.552713678800501e-15,
+        "max_slem_difference": 1.4432899320127035e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.758,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 2.4424906541753444e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.806,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.440892098500626e-15,
+        "max_slem_difference": 2.1094237467877974e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.853,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.4424906541753444e-15,
+        "max_slem_difference": 1.9984014443252818e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.9,
+        "permutations": 8,
+        "max_spectrum_match_error": 3.3306690738754696e-15,
+        "max_slem_difference": 1.7763568394002505e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.9437658674809651,
+        "permutations": 8,
+        "max_spectrum_match_error": 2.6645352591003757e-15,
+        "max_slem_difference": 9.992007221626409e-16
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.981,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.887379141862766e-15,
+        "max_slem_difference": 1.1657341758564144e-15
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.9994988127663728,
+        "permutations": 8,
+        "max_spectrum_match_error": 4.6629367034256575e-15,
+        "max_slem_difference": 3.7470027081099033e-16
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 0.9999977612788614,
+        "permutations": 8,
+        "max_spectrum_match_error": 1.7763568394002505e-15,
+        "max_slem_difference": 4.336808689942018e-17
+      },
+      {
+        "gamma": 1.0,
+        "epsilon": 1.0,
+        "permutations": 8,
+        "max_spectrum_match_error": 0.0,
+        "max_slem_difference": 0.0
+      }
+    ]
+  },
+  "turning_point_candidates_by_gamma": {
+    "0.0": [],
+    "0.1": [],
+    "0.25": [],
+    "0.5": [],
+    "0.75": [],
+    "0.9": [],
+    "1.0": []
+  },
+  "turning_point_refinements": [],
+  "exceptional_point_labels": [],
+  "exceptional_point_policy": "No EP labels assigned. Branch proximity/crossing alone is insufficient; a high-precision eigenvalue coalescence and geometric-multiplicity check would be required.",
+  "endpoint_scaling_check": {
+    "0.0": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.486314609543802330862924100026",
+        "0.221878151154662982812861390179",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33522576881720323,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "0.1": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.486314609543802330862924100026",
+        "0.221878151154662982812861390179",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33522576881720323,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "0.25": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.486314609543802330862924100026",
+        "0.221878151154662982812861390179",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33522576881720323,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "0.5": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.486314609543802330862924100026",
+        "0.221878151154662982812861390179",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33522576881720323,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "0.75": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.486314609543802330862924100026",
+        "0.221878151154662982812861390179",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33522576881720323,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "0.9": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.506313309916420582124805177457",
+        "0.223254619810105970066307618561",
+        "0.101539376375826422800635234029",
+        "0.0467623559245305635520247839252",
+        "0.0216204518732068507241258293491",
+        "0.0100165414424812009315034948442",
+        "0.00464516704770098011374100366252",
+        "0.00215520703768854048392943885618"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.335513545546479,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    },
+    "1.0": {
+      "method": "50-digit eigensolve on 10x10 symmetric block plus six pinned antisymmetric products",
+      "p_values_1_minus_epsilon": [
+        "0.1",
+        "0.01",
+        "0.001",
+        "0.0001",
+        "1.0e-5",
+        "1.0e-6",
+        "1.0e-7",
+        "1.0e-8"
+      ],
+      "nonperron_slem_values": [
+        "0.526286573633328858188802666362",
+        "0.231900044306727595597233051932",
+        "0.103549425152977670754582747272",
+        "0.0471617604535385042427175901227",
+        "0.0217021364330260792677034552868",
+        "0.0100336543745468516923784871172",
+        "0.0046488030440163654731570937715",
+        "0.0021559851930695198750496515579"
+      ],
+      "loglog_slope_fit_using_p_1e-2_to_1e-8": 0.33795389768889184,
+      "interpretation": "finite-range empirical scaling estimate; not an asymptotic proof"
+    }
+  },
+  "interpretive_limits": [
+    "Extrema are local numerical candidates only; high-precision local refinement does not prove global extrema or exhaust unsampled structure.",
+    "The endpoint scaling fit is empirical over a finite range and is not an asymptotic theorem.",
+    "No inference about the Time Loom, Double Alpha as a whole, physical time, gravity, or experiment 005a follows from these matrix results."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "mpmath": "1.4.1",
+    "platform": "Linux-6.18.38+-x86_64-with-glibc2.39",
+    "high_precision_decimal_digits": 50
+  },
+  "outputs": {
+    "sweep_csv": "/workspace/marginal_preserving_coupling_sweep.csv",
+    "branch_tracking_csv": "/workspace/marginal_preserving_coupling_branch_tracking.csv"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "status": "exploratory numerical sweep; not preregistered; not a physical claim",
+  "construction": "M\u03b3 = P(\u03b5)\u2297P(\u03b5), then in source row (\u221e,\u221e) move \u03b3\u03b5\u00b2 from target (\u221e,\u221e) to target (r,r)",
+  "state_order": [
+    "0",
+    "1",
+    "\u221e",
+    "r"
+  ],
+  "pair_indexing": "a*4+b",
+  "gamma_values": [
+    0.25,
+    0.5,
+    0.9
+  ],
+  "epsilon_grid": {
+    "min": 0.0,
+    "max": 1.0,
+    "points": 1001,
+    "step": 0.001,
+    "inclusive_endpoints": true
+  },
+  "slem_definition": "largest eigenvalue modulus after removing one eigenvalue nearest to 1; additional unit eigenvalues remain in the SLEM",
+  "turning_point_tolerance_per_grid_step": 1e-08,
+  "kronecker_baseline_max_slem_error": 2.9976021664879227e-15,
+  "by_gamma": {
+    "0.25": {
+      "endpoints": {
+        "epsilon_0_gap": -4.440892098500626e-16,
+        "epsilon_1_gap": 0.33989409899503376
+      },
+      "grid_turning_points": [],
+      "monotonicity": {
+        "grid_increasing_steps": 1000,
+        "grid_decreasing_steps": 0,
+        "grid_flat_steps_within_tolerance": 0,
+        "minimum_gap_step": 0.00024796216477662725,
+        "maximum_gap_step": 0.0012808243448194645,
+        "nonmonotone_on_grid": false
+      },
+      "max_row_sum_error": 2.220446049250313e-16,
+      "min_transition_probability": 0.0,
+      "max_single_coordinate_marginal_drift": 0.25,
+      "max_coupling_entry_shift": 0.25
+    },
+    "0.5": {
+      "endpoints": {
+        "epsilon_0_gap": -4.440892098500626e-16,
+        "epsilon_1_gap": 0.17743998267624084
+      },
+      "grid_turning_points": [
+        {
+          "kind": "local maximum",
+          "epsilon_grid": 0.731,
+          "gap_grid": 0.1641390689037332,
+          "left_difference": 1.0551774560774163e-06,
+          "right_difference": -6.423952192413651e-08
+        },
+        {
+          "kind": "local minimum",
+          "epsilon_grid": 0.894,
+          "gap_grid": 0.1577790219970273,
+          "left_difference": -6.575330857572226e-08,
+          "right_difference": 1.76964302123217e-06
+        }
+      ],
+      "monotonicity": {
+        "grid_increasing_steps": 837,
+        "grid_decreasing_steps": 163,
+        "grid_flat_steps_within_tolerance": 0,
+        "minimum_gap_step": -5.952393620756169e-05,
+        "maximum_gap_step": 0.0004966063403029075,
+        "nonmonotone_on_grid": true
+      },
+      "max_row_sum_error": 2.220446049250313e-16,
+      "min_transition_probability": 0.0,
+      "max_single_coordinate_marginal_drift": 0.5,
+      "max_coupling_entry_shift": 0.5
+    },
+    "0.9": {
+      "endpoints": {
+        "epsilon_0_gap": -4.440892098500626e-16,
+        "epsilon_1_gap": 0.02663772225998462
+      },
+      "grid_turning_points": [
+        {
+          "kind": "local maximum",
+          "epsilon_grid": 0.557,
+          "gap_grid": 0.1090984800513527,
+          "left_difference": 1.0398774984432535e-06,
+          "right_difference": -4.691243241650156e-07
+        },
+        {
+          "kind": "local minimum",
+          "epsilon_grid": 0.987,
+          "gap_grid": 0.026266394946759752,
+          "left_difference": -3.5679141641153933e-07,
+          "right_difference": 3.6100990647991438e-06
+        }
+      ],
+      "monotonicity": {
+        "grid_increasing_steps": 570,
+        "grid_decreasing_steps": 430,
+        "grid_flat_steps_within_tolerance": 0,
+        "minimum_gap_step": -0.00030003123669752885,
+        "maximum_gap_step": 0.0002543056164187041,
+        "nonmonotone_on_grid": true
+      },
+      "max_row_sum_error": 2.220446049250313e-16,
+      "min_transition_probability": 0.0,
+      "max_single_coordinate_marginal_drift": 0.9,
+      "max_coupling_entry_shift": 0.9
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "platform": "Linux-6.18.38+-x86_64-with-glibc2.39"
+  },
+  "interpretive_limit": "The specified row shift changes both one-thread marginals in the (\u221e,\u221e) source row. Any non-monotonicity is a property of this exact row-shift family, not coupling in general or the Loom.",
+  "outputs": {
+    "csv": "/workspace/coupled_row_shift_sweep.csv",
+    "summary": "/workspace/coupled_row_shift_sweep_summary.json"
+  }
+}
